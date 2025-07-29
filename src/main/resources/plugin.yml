@@ -1,0 +1,23 @@
+name: TitlesPlugin
+version: '1.0-SNAPSHOT'
+main: me.wait_for_meee.titlesPlugin.TitlesPlugin
+api-version: '1.20'
+
+commands:
+  yoshititles:
+
+# temporary: testing
+  serializationtest:
+# temporary end
+  tokens:
+    permission: tokens.admin
+
+
+permissions:
+
+  yoshititles.admin:
+    default: false
+  yoshititles.add:
+    default: false
+  tokens.admin:
+    default: false
