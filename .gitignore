@@ -5,3 +5,11 @@ bugs.txt
 *.xml
 *.xml
 *.class
+target/original-titlesplugin-1.0-SNAPSHOT.jar
+target/titlesplugin-1.0-SNAPSHOT.jar
+target/classes/plugin.yml
+target/classes/titles.yml
+target/classes/tokens.yml
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst

@@ -41,18 +41,26 @@ public class DeleteSubcommand implements Subcommand {
             return;
         }
 
-        //for now, the deletion is only intended for the admin panel
-        if (target == null)
-        {
-            return;
-        }
+        List<?> titles;
 
-        List<?> titles = TitlesPlugin.getTitleManager().getTitles(target.getUniqueId());
+        if (target != null) {
+            titles = TitlesPlugin.getTitleManager().getTitles(target.getUniqueId());
+        } else {
+            titles = TitlesPlugin.getTitleManager().getTitles(executor.getUniqueId());
+        }
 
         if (titles == null) {
 
-            executor.sendMessage(Common.yoshiTitlesMessagePrefix
-                    .append(Component.text("The player has no titles (nothing to delete)")));
+            if (target != null) {
+
+                executor.sendMessage(Common.yoshiTitlesMessagePrefix
+                        .append(Component.text("The player has no titles (nothing to delete)")));
+
+            } else {
+
+                executor.sendMessage(Common.yoshiTitlesMessagePrefix
+                        .append(Component.text("You have no titles no titles (nothing to delete)")));
+            }
 
             return;
         }
@@ -65,7 +73,11 @@ public class DeleteSubcommand implements Subcommand {
             return;
         }
 
-        TitlesPlugin.getTitleManager().deleteTitle(target.getUniqueId(),index);
+        if (target != null) {
+            TitlesPlugin.getTitleManager().deleteTitle(target.getUniqueId(), index);
+        } else {
+            TitlesPlugin.getTitleManager().deleteTitle(executor.getUniqueId(), index);
+        }
 
         executor.sendMessage(Common.yoshiTitlesMessagePrefix
                 .append(Component.text("You have successfully "))

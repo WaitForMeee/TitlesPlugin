@@ -80,6 +80,13 @@ public final class TitleCommand implements CommandExecutor, TabExecutor {
             return true;
         }
 
+        if (strings[0].equals("delete")) {
+
+            DeleteSubcommand deleteSubcommand = new DeleteSubcommand();
+
+            deleteSubcommand.execute(player,args,null);
+        }
+
         //listing
         if (strings[0].equals("list")) {
 
@@ -241,7 +248,8 @@ public final class TitleCommand implements CommandExecutor, TabExecutor {
             Player player = (Player) commandSender;
 
             Stream<String> stream = player.hasPermission("yoshititles.admin") ?
-                    Stream.of("add","set","list","disable","admin","preview","tokens") : Stream.of("add","set","list","disable","preview","tokens");
+                    Stream.of("add","set","list","disable","admin","preview","tokens","delete") :
+                    Stream.of("add","delete","set","list","disable","preview","tokens");
 
             return stream.filter(arg -> arg.startsWith(strings[0])).collect(Collectors.toList());
         }

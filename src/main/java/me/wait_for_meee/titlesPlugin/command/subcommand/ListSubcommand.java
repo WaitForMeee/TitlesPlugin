@@ -3,7 +3,10 @@ package me.wait_for_meee.titlesPlugin.command.subcommand;
 import me.wait_for_meee.titlesPlugin.TitlesPlugin;
 import me.wait_for_meee.titlesPlugin.util.Common;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -46,15 +49,19 @@ public class ListSubcommand implements Subcommand {
 
         Component listMessage = beginning.append(Component.text("titles:\n").color(NamedTextColor.WHITE));
 
-        for (int i = 0;i < titles.size();++i) {
-
+        for (int i = 0; i < titles.size(); ++i) {
             Component title = titles.get(i);
 
-            listMessage = listMessage
-                    .append(Component.text(i + " ").color(NamedTextColor.RED))
+            Component line = Component.text(i + " ").color(NamedTextColor.RED)
                     .append(Component.text("- ").color(NamedTextColor.WHITE))
                     .append(title)
+                    .clickEvent(ClickEvent.runCommand("/yoshititles set " + i))
+                    .hoverEvent(HoverEvent.showText(
+                            Component.text("Click to set!").color(NamedTextColor.WHITE).decorate(TextDecoration.BOLD)
+                    ))
                     .append(Component.text("\n"));
+
+            listMessage = listMessage.append(line);
         }
 
         executor.sendMessage(listMessage);
