@@ -108,6 +108,8 @@ public final class TitleManager {
 
         list.add(title);
 
+        titlesMap.put(uuid,list);
+
         ConfigurationSection section = config.getConfigurationSection("titles_map");
 
         List<String> stringList = section.getStringList(uuid.toString());

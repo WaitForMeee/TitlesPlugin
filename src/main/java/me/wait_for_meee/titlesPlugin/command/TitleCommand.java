@@ -43,28 +43,29 @@ public final class TitleCommand implements CommandExecutor, TabExecutor {
 
         if (strings.length == 0) {
 
-            player.sendMessage(Common.yoshiTitlesMessagePrefix);
-
             player.sendMessage(Common.yoshiTitlesMessagePrefix
-                    .append(Component.text("Hi! This is a quick guide to YoshiTitles plugin!\n\n").color(NamedTextColor.WHITE))
+                    .append(Component.text("\n\nHi! This is a quick guide to YoshiTitles plugin!\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("This plugin lets you create custom titles (displayed after your name)\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("To create a custom title, you need a token\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("The tokens can be obtained in various ways, more about this later\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text(" The subcommands are ").color(NamedTextColor.WHITE))
-                    .append(Component.text("add | set | disable | list | preview\n\n").color(NamedTextColor.GREEN))
+                    .append(Component.text("add | set | disable | list | preview | delete | tokens\n\n").color(NamedTextColor.GREEN))
                     .append(Component.text("preview -> ").color(NamedTextColor.GREEN))
                     .append(Component.text("you can preview what the title will look like using this subcommand\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("add -> ")).color(NamedTextColor.GREEN)
                     .append(Component.text("this subcommand lets you add a custom title " +
                             "(before adding a new title, use preview feature. you can't undo it)\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("list -> ").color(NamedTextColor.GREEN))
-                    .append(Component.text("lists all of your available titles with their indices (needed for selection)\n\n").color(NamedTextColor.WHITE))
+                    .append(Component.text("lists all of your available titles with their indexes (needed for selection)\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("set -> ").color(NamedTextColor.GREEN))
-                    .append(Component.text("lets you choose a title by index (use list feature to see the titles and their indices)\n\n").color(NamedTextColor.WHITE))
+                    .append(Component.text("lets you choose a title by index (use list feature to see the titles and their indexes)\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("disable -> ").color(NamedTextColor.GREEN))
-                    .append(Component.text("disables your title\n").color(NamedTextColor.WHITE))
+                    .append(Component.text("disables your title\n\n").color(NamedTextColor.WHITE))
                     .append(Component.text("tokens -> ").color(NamedTextColor.GREEN))
-                    .append(Component.text("see how many tokens you have\n").color(NamedTextColor.WHITE)));
+                    .append(Component.text("see how many tokens you have\n\n").color(NamedTextColor.WHITE))
+                    .append(Component.text("delete -> ").color(NamedTextColor.GREEN))
+                    .append(Component.text("lets you delete a title by index\n\n").color(NamedTextColor.WHITE))
+                    .append(Common.yoshiTitlesMessagePrefix));
 
             return true;
         }
