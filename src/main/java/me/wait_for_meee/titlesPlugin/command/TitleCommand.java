@@ -183,6 +183,18 @@ public final class TitleCommand implements CommandExecutor, TabExecutor {
 
             OfflinePlayer target = Bukkit.getOfflinePlayer(strings[1]);
 
+            if (strings[2].equals("tokens")) {
+
+                int tokens = TitlesPlugin.getTokenManager().getTokens(target.getUniqueId());
+
+                player.sendMessage(Common.yoshiTitlesMessagePrefix
+                        .append(Component.text("The player ").color(NamedTextColor.WHITE))
+                        .append(Component.text(target.getName() + " ").color(NamedTextColor.GREEN))
+                        .append(Component.text("has ").color(NamedTextColor.WHITE))
+                        .append(Component.text(tokens + " ").color(NamedTextColor.YELLOW))
+                        .append(Component.text("tokens").color(NamedTextColor.WHITE)));
+            }
+
             if (strings[2].equals("add")) {
 
                 AddSubcommand addSubcommand = new AddSubcommand(true);
@@ -274,7 +286,7 @@ public final class TitleCommand implements CommandExecutor, TabExecutor {
                 return List.of();
             }
 
-            return Stream.of("add","set","list","disable","delete")
+            return Stream.of("add","set","list","disable","delete","tokens")
                     .filter(arg -> arg.startsWith(strings[2]))
                     .collect(Collectors.toList());
         }
