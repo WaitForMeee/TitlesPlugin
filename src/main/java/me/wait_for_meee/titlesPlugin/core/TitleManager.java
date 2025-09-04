@@ -3,7 +3,6 @@ package me.wait_for_meee.titlesPlugin.core;
 import me.wait_for_meee.titlesPlugin.util.ComponentSerializer;
 import me.wait_for_meee.titlesPlugin.util.ScoreboardUtil;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -45,8 +44,10 @@ public final class TitleManager {
         ConfigurationSection section = config.getConfigurationSection("titles_map");
 
         if (section == null) {
+
             config.createSection("titles_map");
             section = config.getConfigurationSection("titles_map");
+            save();
         }
 
         for (Map.Entry<String,Object> entry : section.getValues(false).entrySet()) {
@@ -72,8 +73,10 @@ public final class TitleManager {
         ConfigurationSection section1 = config.getConfigurationSection("selected_titles_map");
 
         if (section1 == null) {
+
             config.createSection("selected_titles_map");
             section1 = config.getConfigurationSection("selected_titles_map");
+            save();
         }
 
         for (Map.Entry<String, Object> entry : section1.getValues(false).entrySet()) {
@@ -112,6 +115,12 @@ public final class TitleManager {
 
         ConfigurationSection section = config.getConfigurationSection("titles_map");
 
+        if (section == null) {
+
+            config.createSection("selected_titles_map");
+            save();
+        }
+
         List<String> stringList = section.getStringList(uuid.toString());
 
         stringList.add(ComponentSerializer.serialize(title));
@@ -146,7 +155,9 @@ public final class TitleManager {
         ConfigurationSection section = config.getConfigurationSection("selected_titles_map");
 
         if (section == null) {
+
             config.createSection("selected_titles_map");
+            save();
         }
 
         section.set(uuid.toString(), ComponentSerializer.serialize(list.get(index)));
@@ -160,7 +171,9 @@ public final class TitleManager {
         ConfigurationSection section = config.getConfigurationSection("selected_titles_map");
 
         if (section == null) {
+
             config.createSection("selected_titles_map");
+            save();
         }
 
         section.set(uuid.toString(), ComponentSerializer.serialize(component));
@@ -174,7 +187,9 @@ public final class TitleManager {
         ConfigurationSection section = config.getConfigurationSection("selected_titles_map");
 
         if (section == null) {
+
             config.createSection("selected_titles_map");
+            save();
         }
 
         section.set(uuid.toString(),null);

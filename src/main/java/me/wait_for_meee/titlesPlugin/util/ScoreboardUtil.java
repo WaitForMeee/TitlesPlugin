@@ -3,7 +3,6 @@ package me.wait_for_meee.titlesPlugin.util;
 import me.wait_for_meee.titlesPlugin.TitlesPlugin;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;

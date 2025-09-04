@@ -5,10 +5,8 @@ import me.wait_for_meee.titlesPlugin.util.Common;
 import me.wait_for_meee.titlesPlugin.util.ComponentParser;
 import me.wait_for_meee.titlesPlugin.util.TitleTooLongException;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +26,6 @@ public final class AddSubcommand implements Subcommand {
 
     @Override
     public void execute(@NotNull Player executor, String[] args, @Nullable OfflinePlayer target) {
-
 
         if (!executor.hasPermission("yoshititles.add") && !isAdmin &&
                 TitlesPlugin.getTokenManager().getTokens(executor.getUniqueId()) <= 0)
@@ -54,11 +51,14 @@ public final class AddSubcommand implements Subcommand {
         Component component;
 
         try {
+
             component = ComponentParser.parseFromString(rawTitle);
-        } catch (final TitleTooLongException e) {
+        }
+        catch (final TitleTooLongException e) {
 
             executor.sendMessage(Common.yoshiTitlesMessagePrefix
                     .append(Component.text("The title you provided is too long").color(NamedTextColor.RED)));
+
             return;
         }
 
